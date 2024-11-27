@@ -18,6 +18,10 @@ export class EmployeeListComponent implements OnInit {
     this.getEmployees();
   }
 
+  updateEmployee(id: number){
+
+  }
+
   private getEmployees() {
     this.employeeService.getEmployeesList().subscribe(data => {
       this.employees = data;
