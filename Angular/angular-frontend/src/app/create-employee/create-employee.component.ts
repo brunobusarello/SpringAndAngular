@@ -26,10 +26,17 @@ export class CreateEmployeeComponent implements OnInit {
   }
 
   onSubmit() {
-    this.employeeService.createEmployee(this.employee).subscribe(data => {
-      console.log(data)
-      this.goToEmployeeList()
-    },
-    error => console.log(error))
+    this.employeeService.createEmployee(this.employee).subscribe({
+      next: (data) => {
+        console.log(data)
+        this.goToEmployeeList()
+      },
+      error: (error) => {
+        console.error('Erro ao buscar o funcionário:', error);
+      },
+      complete: () => {
+        console.log('Requisição concluída.');
+      },
+    });
   }
 }
